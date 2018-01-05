@@ -26,7 +26,7 @@ public class Lexer {
     public List<Token> lex(String source) throws Exception {
         this.source = EmojiParser.parseToAliases(source);
         this.line = 1;
-       	System.out.println(this.source);
+
         List<Token> tokenList = new ArrayList<Token>();
 
         if (this.source.isEmpty()) {
