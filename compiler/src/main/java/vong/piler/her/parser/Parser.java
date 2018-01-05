@@ -246,10 +246,6 @@ public class Parser {
 		else if (parent.getName().equals(TokenTypeEnum.CMD) && !dataTypeFunction.containsKey(t.getContent())) {
 			logger.error("Funktion unbekamd: " + t.getContent());
 			System.exit(0);
-		} // Set token type to FNAME		
-		else if(parent.getName().equals(TokenTypeEnum.CMD) && dataTypeFunction.containsKey(t.getContent())) {
-			t.setType(TokenTypeEnum.FNAME);
-			rule = ruleMap.get(TokenTypeEnum.FNAME);
 		} // Check data type CMD && NAME
 		else if (parent.getName().equals(TokenTypeEnum.CMD) && !dataTypeFunction.get(t.getContent())
 				.equals(dataTypeVariable.get(parent.getParent().getParent().getLeft()))) {
