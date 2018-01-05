@@ -5,7 +5,7 @@ import org.apache.commons.lang.StringEscapeUtils;
 public enum TokenTypeEnum {
     // program
     START("(was ist das für 1 code\\?).*", "was ist das für 1 code?"), // start
-    END("(1 nicer!!!).*", "1 nicer!!!"), // end
+    END("(1 n:icecream:r!!!).*", "1 nicer!!!"), // end
     
     // function
     CMD("(was ist das für 1).*", "was ist das für 1"), // call function
@@ -32,7 +32,7 @@ public enum TokenTypeEnum {
     VEND("(!!!).*", "!!!"), // end of variable declaration
 
     // whitespace
-    COMMENT(":X(.*?)(\n|\r\n).*"), WHITESPACE("( |\t).*"), NEWLINE("(\n|\r\n).*"),
+    COMMENT("(:X|:zipper_mouth:)(.*?)(\n|\r\n).*"), WHITESPACE("( |\t).*"), NEWLINE("(\n|\r\n).*"),
 
     // types
     TYPE("(zal\\h|word\\h|isso\\h).*", "zal|word|isso"),
@@ -46,9 +46,9 @@ public enum TokenTypeEnum {
     CONST_WORD("\\\"(.*?)\\\".*", "const_word"), // constant of type word (string)
 
     // name / identifier
-    NAME("\\b([a-zA-Z]{1}[0-9a-zäöüßA-Z_ÄÖÜ]{0,31})\\b.*", "name"),
+    NAME("((:{1}(\\w|\\+|\\|)+:{1})+).*", "name"),
 	
-	FNAME("","fname");
+	FNAME("\\b([a-zA-Z]{1}[0-9a-zäöüßA-Z_ÄÖÜ]{0,31})\\b.*","fname");
     
     private String regEx;
     private String label;

@@ -11,6 +11,8 @@ import vong.piler.her.enums.TokenTypeEnum;
 
 import org.apache.logging.log4j.LogManager;
 
+import com.vdurmont.emoji.EmojiParser;
+
 public class Lexer {
     private String source;
     private int line;
@@ -22,9 +24,9 @@ public class Lexer {
     }
 
     public List<Token> lex(String source) throws Exception {
-        this.source = source;
+        this.source = EmojiParser.parseToAliases(source);
         this.line = 1;
-
+       	System.out.println(this.source);
         List<Token> tokenList = new ArrayList<Token>();
 
         if (this.source.isEmpty()) {
@@ -72,6 +74,7 @@ public class Lexer {
                 case TYPE:
                     token.setContent(matcher.group(1).trim());
                     break;
+                case FNAME:
                 case NAME:
                 case CONST_ZAL:
                 case CONST_WORD:
